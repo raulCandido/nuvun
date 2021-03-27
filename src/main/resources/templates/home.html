@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<div>Nome do produto</div>
-	<div>
-		Valor: <span>154</span>
-	</div>
-	<div>
-		Data da entrega: <span>10/11/2020</span>
-	</div>
-	<div>
-		url do produto: <span>www.google.com/15715</span>
-	</div>
-	<div>Descrição:</div>
-	<div>
-		<textarea rows="" cols="">Texto</textarea>
-	</div>
+	<div th:each="pedido : ${pedidos}">
+		<div th:text="${pedido.nomeProduto}">Nome do produto</div>
+		<div>
+			Valor: <span th:text="${pedido.valor}"></span>
+		</div>
+		<div>
+			<label>Data da entrega:</label>
+			<span th:text="${#temporals.format(pedido.dataEntrega, 'dd/MM/yyyy')}"></span>
+		</div>
+		<div>
+			<label for="input-1">Produto:</label> <input type="text" th:value=${pedido.urlProduto} />
+		</div>
 
-	<img alt="" src="" />
+		<label>Descrição: </label>
+		<div>
+			<textarea rows="12" cols="64" th:text="${pedido.descricao}">Texto</textarea>
+		</div>
+		<img alt="produto" th:src="${pedido.urlImagem}" />
+	</div>
 </body>
 </html>

@@ -12,14 +12,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Pedido {
 
-	private String nomePedido;
+	private String nomeProduto;
 	private BigDecimal valor;
 	private LocalDate dataEntrega;
 	private String urlProduto;
 	private String urlImagem;
+	private String descricao;
 
-	public Pedido(String nomePedido, BigDecimal valor, LocalDate dataEntrega) {
-		setNomePedido(nomePedido);
+	public Pedido(String nomeProduto, BigDecimal valor, LocalDate dataEntrega) {
+		setNomeProduto(nomeProduto);
 		setValor(valor);
 		setDataEntrega(dataEntrega);
 
