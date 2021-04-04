@@ -9,7 +9,7 @@ public class HelloController {
 
 	@GetMapping("oi")
 	public String teste(Model model) {
-		model.addAttribute("texto", "texto que aparece na tela");
+		model.addAttribute("texto", "texto de teste");
 		return "hello";
 	}
 }
