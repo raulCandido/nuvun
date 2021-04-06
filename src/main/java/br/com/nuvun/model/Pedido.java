@@ -25,7 +25,9 @@ public class Pedido {
 	private String nomeProduto;
 	private BigDecimal valor;
 	private LocalDate dataEntrega;
+	@Column(length = 500)
 	private String urlProduto;
+	@Column(length = 500)
 	private String urlImagem;
 	private String descricao;
 
