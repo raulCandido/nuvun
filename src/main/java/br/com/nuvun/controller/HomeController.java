@@ -19,7 +19,7 @@ public class HomeController {
 	private PedidoRepository pedidoRepository;
 	
 
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String home(Model model) {
 		List<Pedido> pedidos = buscarPedidos();
 		//criarPedido();
@@ -32,14 +32,4 @@ public class HomeController {
 		return pedidos;
 	}
 	
-	private void criarPedido() {	
-		Pedido pedido = new Pedido();
-		pedido.setDataEntrega(LocalDate.now());
-		pedido.setDescricao("Caneca estilizada do mundo de Alice");
-		pedido.setNomeProduto("Caneca Alice no País das Maravilhas Gato");
-		pedido.setUrlImagem("https://images-na.ssl-images-amazon.com/images/I/31%2BwpubOrlL._AC_.jpg");
-		pedido.setUrlProduto("https://www.amazon.com.br/Caneca-Alice-Pa%C3%ADs-Maravilhas-Gato/dp/B085BRM5C5/?_encoding=UTF8&pd_rd_w=gsWuu&pf_rd_p=1c6d1c78-c691-4292-af98-b6a56e268b64&pf_rd_r=RQS6J517X3VN62JXDB0K&pd_rd_r=44edb74b-1983-4912-a680-6a4a29363504&pd_rd_wg=niuUY&ref_=pd_gw_crs_wish");
-		pedido.setValor(new BigDecimal(29.90));
-		pedidoRepository.save(pedido);
-	}
 }
