@@ -9,32 +9,48 @@
 </head>
 <body>
 	<div class="container">
+		<header class="d-flex justify-content-center py-3">
+			<div class="container d-flex flex-wrap">
+				<ul class="nav nav me-auto">
+					<li><a href="/" class="nav-link link-dark px-2">nuVun</a></li>
+				</ul>
+				<ul class="nav">
+					<li><a  href="logoff" class="nav-link link-dark px-2">logoff</a></li>
+				</ul>
+			</div>
+
+		</header>
+	</div>
+	<div class="container">
 		<div class="p-4 p-md-5 mb-3 text-white rounded bg-dark" style="background-color: #A0CED9">
 			<div class="col-md-6 px-0">
 				<h1 class="display-4 fst-italic">Novo pedido</h1>	
 				<p class="lead my-3">Preencha o formulario abaixo</p>		
 			</div>
 		</div>
-		<form action="/pedido/novo" method="POST">
+		<form th:object="${pedidoDto}" action="/pedido/novo" method="POST">
 			<div class="mb-3 border rounded p-4 mb-4">
 				<div class="mb-3">
 					<label for="nomeProduto" class="form-label">Produto</label>
-	   				<input type="text" name="nomeProduto" placeholder="Nome do produto" class="form-control" id="nomeProduto" aria-describedby="ajudaProduto">
-	   				<div id="ajudaProduto" class="form-text">Digite aqui o nome do produto</div>
+		   			<input type="text" th:field="*{nomeProduto}" placeholder="Nome do produto" th:errorclass="is-invalid" class="form-control" >
+		   			<div id="ajudaProduto" class="form-text">Digite aqui o nome do produto</div>
+		   			<div th:errors="*{nomeProduto}" class="invalid-feedback">erros</div>
 				</div>
 				<div class="mb-3">
 					<label for="urlProduto" class="form-label">URL do produto</label>
-	   				<input type="text" name="urlProduto" placeholder="URL do produto" class="form-control" id="urlProduto"aria-describedby="urlProduto">
+	   				<input type="text" th:field="*{urlProduto}" th:errorclass="is-invalid" placeholder="URL do produto" class="form-control">
 	   				<div id="urlProduto" class="form-text">Busque em algum site de segurança e coloque a URL dele aqui</div>
+	   				<div th:errors="*{urlProduto}" class="invalid-feedback">erros</div>
 				</div>
 				<div class="mb-3">
 					<label for="urlImagemProduto" class="form-label">URL da imagem</label>
-	   				<input type="text" name="urlImagemProduto" placeholder="URL da imagem do produto" class="form-control" id="urlImagemProduto"aria-describedby="urlImagemProduto">
+	   				<input type="text" th:field="*{urlImagemProduto}" placeholder="URL da imagem do produto" th:errorclass="is-invalid" class="form-control">
 	   				<div id="urlImagemProduto" class="form-text">Busque uma boa imagem do produto e coloque a URL dessa imagem aqui</div>
+					<div th:errors="*{urlImagemProduto}" class="invalid-feedback">erros</div>
 				</div>
 				<div class="mb-3">
 					<label for="descricaoProduto" class="form-label">Descrição do produto</label>
-	   				<textarea class="form-control" name="descricaoProduto" rows="5" placeholder="Digite aqui a descrição do produto" id="descricaoProduto"></textarea>
+	   				<textarea class="form-control" th:field="*{descricaoProduto}" rows="5" placeholder="Digite aqui a descrição do produto" ></textarea>
 				</div>
 				<button class="btn btn-success" type="submit">Salvar</button>
 			</div>
