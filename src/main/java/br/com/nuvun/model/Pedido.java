@@ -22,6 +22,7 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(length = 500)
 	private String nomeProduto;
 	private BigDecimal valor;
 	private LocalDate dataEntrega;
@@ -29,6 +30,7 @@ public class Pedido {
 	private String urlProduto;
 	@Column(length = 500)
 	private String urlImagem;
+	@Column(length = 500)
 	private String descricao;
 
 	public Pedido(String nomeProduto, BigDecimal valor, LocalDate dataEntrega) {
